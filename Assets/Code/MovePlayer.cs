@@ -10,6 +10,7 @@ public class MovePlayer : MonoBehaviour
 	public bool assaultMode = false;
 	public float assaultSpeed = 0.3f;
 	public float assaultAngledSpeed = 0.2f;
+	public GameObject player;
 	
 	private tk2dAnimatedSprite anim;
 	private bool idle = true;
@@ -359,8 +360,13 @@ public class MovePlayer : MonoBehaviour
 			idle = false;
 		}
 	}
-	void OnCollisionEnter(Collision collision)
+	void OnTriggerEnter()
 	{
-		//Debug.Log(collision.relativeVelocity.magnitude);
+		Vector3 lastPosition = Vector3.zero;
+		float impactVelocity = (transform.position - lastPosition).magnitude;
+		if(walkingRight)
+		{
+			transform.Translate(Vector3.left * ((2 * speed) * (1 + impactVelocity)) * Time.deltaTime, Space.World);
+		}
 	}
 }
