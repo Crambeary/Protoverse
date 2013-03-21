@@ -361,6 +361,6 @@ public class MovePlayer : MonoBehaviour
 	}
 	void OnCollisionEnter(Collision collision)
 	{
-		Debug.Log(collision.relativeVelocity.magnitude);
+		//Debug.Log(collision.relativeVelocity.magnitude);
 	}
 }

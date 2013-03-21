@@ -375,7 +375,7 @@ public class CameraController2D : MonoBehaviour {
 		var leftHorizontalPushBack = 0f;
 		var upVerticalPushBack = 0f;
 		var downVerticalPushBack = 0f;
-
+		
 		rightHorizontalPushBack = CalculatePushback(rightRaycastPoint, idealCenterPointAtPlayerHeight, CameraBumper.BumperDirection.HorizontalPositive);
 		if (rightHorizontalPushBack > horizontalPushBack) {
 			horizontalPushBack = rightHorizontalPushBack;
@@ -446,7 +446,7 @@ public class CameraController2D : MonoBehaviour {
 		}
 		return (verticalVector * -verticalPushBack * verticalFacing) + (horizontalVector * -horizontalPushBack * horizontalFacing);
 	}
-
+	
 	float CalculatePushback(OffsetData offset, Vector3 idealCenterPoint, CameraBumper.BumperDirection validDirections = CameraBumper.BumperDirection.AllDirections) {
 		RaycastHit hitInfo;
 		var pushbackDueToCollision = 0f;
