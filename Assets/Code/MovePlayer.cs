@@ -360,13 +360,24 @@ public class MovePlayer : MonoBehaviour
 			idle = false;
 		}
 	}
-	void OnTriggerEnter()
+	void OnTriggerEnter(Collider other)
 	{
 		Vector3 lastPosition = Vector3.zero;
 		float impactVelocity = (transform.position - lastPosition).magnitude;
-		if(walkingRight)
+		Vector3 impact = (rigidbody.velocity);
+		Debug.Log(impact);
+		/*if(walkingRight)
 		{
 			transform.Translate(Vector3.left * ((2 * speed) * (1 + impactVelocity)) * Time.deltaTime, Space.World);
+		}*/
+		if(other.name == "BounceTest")
+		{
+			player.rigidbody.velocity = new Vector3(0.0f,2.0f,0.0f);
+		}
+		else
+		{
+			transform.Translate(Vector3.down * ((2 * speed) * (1 + impactVelocity)) * Time.deltaTime, Space.World);
+			player.rigidbody.velocity = new Vector3 (0.0f,0.0f,0.0f);
 		}
 	}
 }
